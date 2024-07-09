@@ -1,0 +1,53 @@
+:root{
+    --light: rgb(207, 224, 224);
+    --dark: rgb(15, 12, 12);
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: gray;
+}
+.toggle-switch{
+    width: 250px;
+    position: relative;
+}
+label{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: var(--dark);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.slider{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background-color: var(--dark);
+}
+input:checked ~ .slider{
+    background-color: var(--light);
+}
+.slider::before{
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: var(--dark);
+    border-radius: 50%;
+    top: 10px;
+    left: 10px;
+    box-shadow: inset 20px 0 0 0 var(--light);
+    transition: 0.2s;
+}
+input:checked ~ .slider::before{
+    transform: translateX(150px);
+    background-color: var(--dark);
+    box-shadow: none;
+}
+body:has(:checked){
+    background-color: rgb(215, 231, 250);
+}
